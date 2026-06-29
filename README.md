@@ -2,8 +2,8 @@
 
 ## Progress
 
-- [ ] 1. Counter App - buttons, state, DOM updates
-- [ ] 2. Random Quote Generator - arrays + random numbers
+- [x] 1. Counter App - buttons, state, DOM updates
+- [x] 2. Random Quote Generator - arrays + random numbers
 - [ ] 3. Dice Roller - functions + UI updates
 - [ ] 4. BMI Calculator - inputs + calculations
 - [ ] 5. Tip Calculator - form handling

@@ -5,17 +5,21 @@ const resetBtn = document.querySelector("#reset-btn");
 
 let count = 0;
 
+function updateDisplay() {
+    countDisplay.textContent = count;
+}
+
 increaseBtn.addEventListener("click", function() {
     count++;
-    countDisplay.textContent = count;
+    updateDisplay();
 })
 
 decreaseBtn.addEventListener("click", function() {
     count--;
-    countDisplay.textContent = count;
+    updateDisplay();
 })
 
 resetBtn.addEventListener("click", function() {
     count = 0;
-    countDisplay.textContent = count;
+    updateDisplay();
 })
