@@ -3,6 +3,7 @@ const tipPercentage = document.querySelector("#tip-percentage");
 const calcBtn = document.querySelector("#calc-btn");
 const tipDisplay = document.querySelector("#tip-display");
 const resultDisplay = document.querySelector("#result-display");
+const errorDisplay = document.querySelector("#error-display");
 
 // Tip Calculator 
 // Enter bill amount
@@ -15,58 +16,40 @@ const resultDisplay = document.querySelector("#result-display");
 // - Tip amount
 // - Total bill
 
-// Pseudocode:
-// Accept inputs; bill amount, and tip percentage.
-// Calculate N% of bill + bill. Formula; tip percentage * bill amount + bill amount.
-
-function getTip(tipPercentage, billAmount) {
-    return Number(tipPercentage) / 100 * Number(billAmount);
-}
-
-function getTotal(tipPercentage, billAmount) {
-    // Convert input to Number. And to percentage.
-    let percentage = Number(tipPercentage) / 100 * Number(billAmount);
-
-    // Convert bill input to Number. And return result.
-    let bill = Number(billAmount);
-    return percentage * bill + bill;
-}
-
-// Refactored:
-
 // Get the tip amount.
-// function getTip(bill, tip) {
-//     return tip / 100 * bill;
-// };
+function getTip(bill, tip) {
+    return tip / 100 * bill;
+};
 
-// // Get the total amount.
-// function getTotal(bill, tip) {
-//     return bill + getTip(bill, tip);
-// };
+// Get the total amount.
+function getTotal(bill, tip) {
+    return bill + getTip(bill, tip);
+};
+
+// Validation.
+// Inputs are must. No negative values.
+function validation(bill, tip) {
+
+    if (bill === "" || tip === "") return "Inputs are must."
+    if (bill < 0 || tip < 0) return "No negative values"
+}
 
 calcBtn.addEventListener("click", (e) => {
     // Prevent refreshing the display.
     e.preventDefault();
 
-    // // Convert the inputs to Numbers.
-    // const bill = Number(billAmount.value);
-    // const tip = Number(tipPercentage.value);
+    // Convert the inputs to Numbers.
+    const bill = Number(billAmount.value);
+    const tip = Number(tipPercentage.value);
 
-    // // If input has no value, display note:
-
-    // // Display tip total.
-    // tipDisplay.textContent = getTip(bill, tip)
-
-    // // Calculate total.
-    // resultDisplay.textContent = getTotal(bill, tip);
-
-        // // If input has no value, display note:
+    // Validation.
+    errorDisplay.textContent = validation(billAmount.value, tipPercentage.value);
 
     // Display tip total.
-    tipDisplay.textContent = getTip(billAmount.value, tipPercentage.value)
+    tipDisplay.textContent = getTip(bill, tip)
 
     // Calculate total.
-    resultDisplay.textContent = getTotal(billAmount.value, tipPercentage.value);
+    resultDisplay.textContent = getTotal(bill, tip);
 });
 
 // Additional features.
