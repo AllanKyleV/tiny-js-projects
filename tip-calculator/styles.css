@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: maroon;
+}
+
+#calc-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 35%;
+    background-color: aquamarine;
+    gap: 2rem;
+}
+
+#calc-form {
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    gap: 0.5rem;
+}
