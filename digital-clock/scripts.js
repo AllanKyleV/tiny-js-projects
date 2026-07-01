@@ -7,7 +7,7 @@ const hour = document.querySelector("#hour");
 const minute = document.querySelector("#minute");
 const second = document.querySelector("#second");
 const meridiem = document.querySelector("#meridiem");
-const clock = document.querySelector("#clock")
+const clock = document.querySelector("#clock");
 
 // We'll use the built-in functions for time/date which are; now.getHours(), now.getMinutes, now.getSeconds();
 const now = new Date();
@@ -23,10 +23,10 @@ function getMeridiem(hours) {
 
 // Background color according to current meridiem.
 function changeBackground(meridiem) {
-    return meridiem === "AM" ? [{text : "black", backgroundColor : "white"}] : [{text : "white", backgroundColor : "black"}];
+    return meridiem === "AM" ? [{text : "blue", backgroundColor : "white"}] : [{text : "white", backgroundColor : "black"}];
 }
 
-const colors = changeBackground(meridiem)
+const colors = changeBackground(getMeridiem(now.getHours()));
 
 meridiem.textContent = getMeridiem(now.getHours());
 clock.style.color = colors.text;
