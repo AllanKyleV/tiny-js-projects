@@ -19,46 +19,54 @@ const resultDisplay = document.querySelector("#result-display");
 // Accept inputs; bill amount, and tip percentage.
 // Calculate N% of bill + bill. Formula; tip percentage * bill amount + bill amount.
 
-// function getTip(tipPercentage, billAmount) {
-//     return Number(tipPercentage) / 100 * Number(billAmount);
-// }
+function getTip(tipPercentage, billAmount) {
+    return Number(tipPercentage) / 100 * Number(billAmount);
+}
 
-// function getTotal(tipPercentage, billAmount) {
-//     // Convert input to Number. And to percentage.
-//     let percentage = Number(tipPercentage) / 100;
+function getTotal(tipPercentage, billAmount) {
+    // Convert input to Number. And to percentage.
+    let percentage = Number(tipPercentage) / 100 * Number(billAmount);
 
-//     // Convert bill input to Number. And return result.
-//     let bill = Number(billAmount);
-//     return percentage * bill + bill;
-// }
+    // Convert bill input to Number. And return result.
+    let bill = Number(billAmount);
+    return percentage * bill + bill;
+}
 
 // Refactored:
 
 // Get the tip amount.
-function getTip(bill, tip) {
-    return tip / 100 * bill;
-};
+// function getTip(bill, tip) {
+//     return tip / 100 * bill;
+// };
 
-// Get the total amount.
-function getTotal(bill, tip) {
-    return bill + getTip(bill, tip);
-};
+// // Get the total amount.
+// function getTotal(bill, tip) {
+//     return bill + getTip(bill, tip);
+// };
 
 calcBtn.addEventListener("click", (e) => {
     // Prevent refreshing the display.
     e.preventDefault();
 
-    // Convert the inputs to Numbers.
-    const bill = Number(billAmount.value);
-    const tip = Number(tipPercentage.value);
+    // // Convert the inputs to Numbers.
+    // const bill = Number(billAmount.value);
+    // const tip = Number(tipPercentage.value);
 
-    // If input has no value, display note:
+    // // If input has no value, display note:
+
+    // // Display tip total.
+    // tipDisplay.textContent = getTip(bill, tip)
+
+    // // Calculate total.
+    // resultDisplay.textContent = getTotal(bill, tip);
+
+        // // If input has no value, display note:
 
     // Display tip total.
-    tipDisplay.textContent = getTip(bill, tip)
+    tipDisplay.textContent = getTip(billAmount.value, tipPercentage.value)
 
     // Calculate total.
-    resultDisplay.textContent = getTotal(bill, tip);
+    resultDisplay.textContent = getTotal(billAmount.value, tipPercentage.value);
 });
 
 // Additional features.
