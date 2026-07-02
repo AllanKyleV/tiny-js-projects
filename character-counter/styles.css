@@ -1,0 +1,26 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1 {
+    color: maroon;
+}
+
+#input-text {
+    min-width: 30rem;
+    padding-bottom: 25rem;
+}
+
+textarea {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 15px;
+}
