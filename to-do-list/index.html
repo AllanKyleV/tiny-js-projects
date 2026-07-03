@@ -8,17 +8,23 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
-    <h1>To-Do List</h1>
 
+    <!--To-do list section.-->
     <section>
-        <input type="text" id="task-input">
-        <button id="add-task">Add Task</button>
+        <h1>To-Do List</h1>
 
-        <p>My Tasks:</p>
-        <!--Task's list.-->
-        <ul id="list">
+        <h2>Create Task</h2>
+        <!--Form.-->
+        <form id="container">
+            <input type="text"  id="input-task" placeholder="Input task...">
 
-        </ul>
+            <button id="create-task-btn">Add Task</button>
+        </form>
+
+        <h2>Tasks</h2>
+        <!--Task List.-->
+
+        <ul id="list-container"></ul>
     </section>
 </body>
 </html>

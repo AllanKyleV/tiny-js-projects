@@ -1,21 +1,32 @@
-const input = document.querySelector("#task-input");
-const addTask = document.querySelector("#add-task");
-const ul = document.querySelector("#list");
+const inputTask = document.querySelector("#input-task");
+const addTaskBtn = document.querySelector("#create-task-btn");
+const ul = document.querySelector("#list-container");
 
-// Add task.
-addTask.addEventListener("click", (e) => {
+addTaskBtn.addEventListener("click", (e) => {
+    // Prevent refreshing the display.
     e.preventDefault();
-    // Create element.
-    const li = document.createElement("li");
-    li.textContent = input.value;
 
-    // Check if empty.
-    if (input.value === "") {
-        alert("Input must not be empty. Silly!")
+    // Validate the input.
+    if (inputTask.value === "") {
+        alert("Input Must Not Be Empty!")
     } else {
-        // Add element.
-        ul.append(li);
-    }
-})
+        // Proceed.
 
-// If the task is created, also add complete 
+        // Create task with buttons.
+        const li = document.createElement("li");
+        const completeBtn = document.createElement("button");
+        const deleteBtn = document.createElement("button");
+
+        // Get text content and Append.
+        li.textContent = inputTask.value;
+        completeBtn.textContent = "Completed";
+        deleteBtn.textContent = "Delete";
+        ul.append(li);
+        ul.append(completeBtn);
+        ul.append(deleteBtn);
+
+        // Clear Input.
+        inputTask.value = "";
+    }
+});
+
