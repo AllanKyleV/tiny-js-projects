@@ -14,19 +14,39 @@ addTaskBtn.addEventListener("click", (e) => {
 
         // Create task with buttons.
         const li = document.createElement("li");
+        const content = document.createElement("span")
         const completeBtn = document.createElement("button");
         const deleteBtn = document.createElement("button");
 
-        // Get text content and Append.
-        li.textContent = inputTask.value;
+        // Get text content.
+        content.textContent = inputTask.value;
         completeBtn.textContent = "Completed";
         deleteBtn.textContent = "Delete";
+
+        // Append.
         ul.append(li);
-        ul.append(completeBtn);
-        ul.append(deleteBtn);
+        li.append(content);
+        li.append(completeBtn);
+        li.append(deleteBtn);
 
         // Clear Input.
         inputTask.value = "";
+
+        // Click complete.
+        completeBtn.addEventListener("click", () => {
+
+            if (content.style.textDecoration === "line-through") {
+                content.style.textDecoration = "none";
+                completeBtn.textContent = "Completed";
+            } else {
+                content.style.textDecoration = "line-through";
+                completeBtn.textContent = "Undo";
+            }
+        });
+
+        // Delete task.
+        deleteBtn.addEventListener("click", () => {
+            li.remove();
+        })
     }
 });
-
