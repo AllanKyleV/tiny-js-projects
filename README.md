@@ -9,6 +9,6 @@
 - [x] 5. Tip Calculator - form handling
 - [x] 6. Digital Clock - setInterval + Date 
 - [x] 7. Character Counter - input events
-- [ ] 8. To-Do List - arrays + DOM rendering
+- [x] 8. To-Do List - arrays + DOM rendering
 - [ ] 9. Password Generator - logic + randomness
 - [ ] 10. Pomodoro Timer - timers + simple state management
