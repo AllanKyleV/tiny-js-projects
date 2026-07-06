@@ -18,7 +18,7 @@ function getRandom(array) {
     return Math.floor(Math.random() * array.length)
 }
 
-// generate lowercase.
+// Generate lowercase.
 function getLowerCase(letters, limit) {
     // loop the letters limit times.
     let result = [];
@@ -29,3 +29,9 @@ function getLowerCase(letters, limit) {
     
     return result.join('');
 }
+
+// Generate uppercase.
+function getUpperCase(letters, limit) {
+    return getLowerCase(letters, limit).toUpperCase();
+}
+
