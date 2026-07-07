@@ -5,7 +5,6 @@ const numbersChecked = document.querySelector("#numbers");
 const symbolsChecked = document.querySelector("#symbols");
 
 // Libraries
-// Libraries
 const letters = [
   "a", "b", "c", "d", "e", "f", "g",
   "h", "i", "j", "k", "l", "m", "n",
@@ -36,25 +35,33 @@ function getUpperCase(letters, limit) {
 }
 
 // Generate numbers 
-function getNumbers() {
-    return Math.floor(Math.random() * 10);
+function getNumbers(limit) {
+    let result = [];
+    for (let i = 0; i < limit; i++) {
+        result.push(Math.floor(Math.random() * 10).toString());
+    }
+    return result.join('');
 }
 
 // Generate Symsbols
 const symbols = "!@#$%^&*()-_=+[]{}|\\:;\"'<>,.?/";
 
 function getSymbols(symbols, limit) {
-    let result = "";
+    let result = [];
     for (let i = 0; i < limit; i++) {
-        result += symbols[getRandom(symbols)];
+        result.push(symbols[getRandom(symbols)]);
     }
-    return result;
+    return result.join('');
 }
+
+const limit = 10;
 
 // All characters.
 let uppercase = getUpperCase(letters, limit);
 let lowercase = getLowerCase(letters, limit);
-let numbers = getNumbers();
-let symbols = getSymbols();
+let number = getNumbers(limit);
+let symbol = getSymbols(symbols, limit);
 
-let allChars = [...uppercaseArray, ...lowercaseArray]
+let allChars = [...uppercase, ...lowercase, ...number, ...symbol];
+ 
+console.log(allChars);
