@@ -3,6 +3,8 @@ const uppercaseChecked = document.querySelector("#uppercase");
 const lowercaseChecked = document.querySelector("#lowercase");
 const numbersChecked = document.querySelector("#numbers");
 const symbolsChecked = document.querySelector("#symbols");
+const generateBtn = document.querySelector("#generate-btn");
+const displayPassword = document.querySelector("#display-pass");
 
 // Libraries
 const letters = [
@@ -62,6 +64,29 @@ let lowercase = getLowerCase(letters, limit);
 let number = getNumbers(limit);
 let symbol = getSymbols(symbols, limit);
 
-let allChars = [...uppercase, ...lowercase, ...number, ...symbol];
- 
-console.log(allChars);
+// Get final password.
+function generatePassword(allChars, limit) {
+    let result = [];
+
+    for (let i = 0; i < limit; i++ ) {
+        result.push(allChars[getRandom(allChars)])
+    }
+
+    return result.join('');
+}
+
+// Generate button.
+generateBtn.addEventListener("click", () => {
+    // Validation.
+    if (passLength.value === "") alert("Enter the desired password length.");
+
+    let allChars = [];
+
+    // Check boxes.
+    if (uppercaseChecked.checked) allChars.push(...uppercase);
+    if (lowercaseChecked.checked) allChars.push(...lowercase);
+    if (numbersChecked.checked) allChars.push(...number);
+    if (symbolsChecked.checked) allChars.push(...symbol);
+
+    displayPassword.textContent = generatePassword(allChars, passLength.value);
+});
