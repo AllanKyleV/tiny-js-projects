@@ -8,15 +8,15 @@ const startBtn = document.querySelector(".start-btn");
 const pauseBtn = document.querySelector(".pause-btn");
 const resetBtn = document.querySelector(".reset");
 
-// Count down.
-let timeLeft = 25 * 60;
-let interval;
+// Count down
+const defaultTime = 25 * 60;
+let timeLeft = defaultTime;
+let interval = null;
 
-// Update timer.
+// Update timer
 function updateTimer() {
-    // Convert hours, and minutes into seconds.
     const hour = Math.floor(timeLeft / 3600);
-    const min = Math.floor(timeLeft / 60);
+    const min = Math.floor((timeLeft % 3600) / 60);
     const sec = timeLeft % 60;
 
     hours.textContent = hour.toString().padStart(2, "0");
@@ -24,21 +24,39 @@ function updateTimer() {
     seconds.textContent = sec.toString().padStart(2, "0");
 }
 
-// Start timer.
-const startTimer = () => {
+// Start timer
+function startTimer() {
+    if (interval) return;
+
     interval = setInterval(() => {
         timeLeft--;
-        updateTimer();
 
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             clearInterval(interval);
-            alert("Times up!");
-            timeLeft = 25 * 60;
-            updateTimer(); 
+            interval = null;
+            alert("Time's up!");
+            timeLeft = defaultTime;
         }
-    }, 1000)
+
+        updateTimer();
+    }, 1000);
 }
 
-startBtn.addEventListener("click", () => {
-    startTimer()
-})
+function pauseTimer() {
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+    }
+}
+
+function resetTimer() {
+    pauseTimer();
+    timeLeft = defaultTime;
+    updateTimer();
+}
+
+updateTimer();
+
+startBtn.addEventListener("click", startTimer);
+pauseBtn.addEventListener("click", pauseTimer);
+resetBtn.addEventListener("click", resetTimer);
